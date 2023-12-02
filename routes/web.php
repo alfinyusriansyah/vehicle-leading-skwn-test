@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', [SesiController::class, 'index'])->name('login');
+Route::get('/register', [SesiController::class, 'register'])->name('register');
 Route::post('/login', [SesiController::class, 'login']);
 Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 

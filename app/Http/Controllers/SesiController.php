@@ -13,6 +13,11 @@ class SesiController extends Controller
         return view('login-page');
     }
 
+    function register() 
+    {
+        return view('register');
+    }
+
     function login(Request $request){
 
         $request->validate([

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class SesiController extends Controller
 {
@@ -37,31 +37,16 @@ class SesiController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'admin') {
-                return redirect('/admin');
+                return redirect('/admin') -> with('success', 'berhasil login sebagai admin');
             } elseif ($user->role === 'approver') {
-                return redirect('/approver');
+                return redirect('/approver')->with('success', 'berhasil login sebagai approver');
             }
         }
         return back()->withErrors(['email' => 'Email atau password salah']);
     }
 
-    use AuthenticatesUsers;
-
-    protected $redirectTo = '/'; // Default redirect path after login
-
-    protected function authenticated(Request $request, $user)
-    {
-        if ($user->role === 'admin') {
-            return redirect('/admin');
-        } elseif ($user->role === 'approval') {
-            return redirect('/approval');
-        }
-
-        return redirect('/');
-    }
-
-    function logout() {
+    public function logout() {
         Auth::logout();
-        return redirect();
+        return redirect('/login') -> with('success', 'berhasil logout');
     }
 }

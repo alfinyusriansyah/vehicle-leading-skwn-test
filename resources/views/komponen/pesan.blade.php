@@ -1,9 +1,14 @@
-@if (Session::has('success'))
-    <div class="pt-3">
-        <div class="alert alert-success">
-            {{ Session::get('success') }}
-        </div>
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if ($message = Session::get('success')) 
+    <script>
+        Swal.fire(
+            text='{{$message}}')
+    </script>
+@endif
+
+@if (Session::has('failed'))
+
 @endif
 
 @if ($errors->any())

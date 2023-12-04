@@ -37,12 +37,12 @@ class SesiController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'admin') {
-                return redirect('/admin') -> with('success', 'berhasil login sebagai admin');
+                return redirect('/admin')->with('success', 'berhasil login sebagai admin');
             } elseif ($user->role === 'approver') {
                 return redirect('/approver')->with('success', 'berhasil login sebagai approver');
             }
         }
-        return back()->withErrors(['email' => 'Email atau password salah']);
+        return back()->with(['error', 'Email atau password salah']);
     }
 
     public function logout() {

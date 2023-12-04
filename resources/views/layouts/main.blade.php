@@ -23,7 +23,8 @@
 </head>
 
 <body id="page-top">
-    @include('komponen.pesan')
+    {{-- @include('komponen.pesan') --}}
+    @include('sweetalert::alert')
     <!-- Page Wrapper -->
     <div id="wrapper">
         
